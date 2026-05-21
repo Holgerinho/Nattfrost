@@ -1,0 +1,6 @@
+@NattfrostBackend_HostAddress = http://localhost:5111
+
+GET {{NattfrostBackend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
