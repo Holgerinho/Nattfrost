@@ -22,6 +22,12 @@ namespace NattfrostBackend.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSubscriber(CreateSubscribeRequest requesten)
         {
+            // Modelvalidation is checked by ASP.Net Core.
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
             var existingSubscriber = await _context.Subscribers.FirstOrDefaultAsync(s => s.Email == requesten.Email);
             if (existingSubscriber != null)
             {
@@ -34,7 +40,7 @@ namespace NattfrostBackend.Controllers
                 City = requesten.City,
                 CreatedAt = DateTime.UtcNow
             };
-
+            
             _context.Subscribers.Add(subscriber);
             await _context.SaveChangesAsync();
             return Ok(new {Message = "Subscriber created successfully." }); // DONE!
