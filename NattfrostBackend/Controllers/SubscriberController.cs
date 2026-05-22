@@ -25,7 +25,7 @@ namespace NattfrostBackend.Controllers
             var existingSubscriber = await _context.Subscribers.FirstOrDefaultAsync(s => s.Email == requesten.Email);
             if (existingSubscriber != null)
             {
-                return BadRequest("Email already subscribed.");
+                return BadRequest("Email already subscribed");
             }
 
             var subscriber = new Subscriber
