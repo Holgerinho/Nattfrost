@@ -9,5 +9,7 @@ namespace NattfrostBackend.Data
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
         //DbSet for Subscribers  
         public DbSet<Entities.Subscriber> Subscribers { get; set; }  
-    }
+    
+    
+    }// end class AppDbContext
 }
