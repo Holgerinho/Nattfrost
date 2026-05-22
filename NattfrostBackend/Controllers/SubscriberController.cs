@@ -46,7 +46,15 @@ namespace NattfrostBackend.Controllers
             return Ok(new {Message = "Subscriber created successfully." }); // DONE!
         
         }// end CreateSubscriber
+    
 
+        [HttpGet]
+        public async Task<IActionResult> GetSubscribers()
+        {
+            var subscribers = await _context.Subscribers.ToListAsync();
+
+            return Ok(subscribers);
+        }
 
     }// end class SubscriberController
 }
