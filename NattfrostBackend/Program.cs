@@ -10,7 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddHttpClient<OpenMeteoService>();
 // !!! Here is the place Holgerino where you swap NoOpEmailService for your real email service
 builder.Services.AddSingleton<IEmailNotificationService, NoOpEmailService>();
-builder.Services.AddHostedService<FrostCheckBackgroundService>();
+builder.Services.AddSingleton<FrostCheckBackgroundService>();
+builder.Services.AddHostedService(sp => sp.GetRequiredService<FrostCheckBackgroundService>());
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddOpenApi();
