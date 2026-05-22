@@ -60,7 +60,7 @@ public class FrostCheckBackgroundService : BackgroundService
     /// Fetches all subscribers, checks each city for frost risk,
     /// and sends alerts for any that are at risk.
     /// </summary>
-    private async Task RunFrostCheckAsync(CancellationToken stoppingToken)
+    public async Task RunFrostCheckAsync(CancellationToken stoppingToken)
     {
         using var scope = _scopeFactory.CreateScope();
 
