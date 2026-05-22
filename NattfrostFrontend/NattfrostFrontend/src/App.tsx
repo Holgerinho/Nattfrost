@@ -1,61 +1,64 @@
 import { useState } from 'react'
-import logo from './assets/test copy 2.png'
 import './App.css'
+import logo from './assets/test_copy_2.png'
 
 function App() {
+
   const [email, setEmail] = useState('')
   const [stad, setStad] = useState('')
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: submit to backend
     console.log({ email, stad })
   }
 
+
   return (
-    <div className="page">
-      <header className="site-header">
-        <img src={logo} alt="Nattfrost" className="site-logo"/>
+
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="Nattfrost" />
       </header>
+      
+      <hr className="Divider" />
 
-      <hr className="divider" />
-
-      <main className="content">
-        <p className="description">
-          Nattfrost är en based app som låter dig kolla om det blir frost
-          under natten n-shit. Så att dina växter slipper bli rippedy rekt.
-        </p>
-        <p className="description">
-          Fyll i email + stad i fälten nedan och tryck Ok. Vi skickar ett email runt kl
-          19:00 varje dag om det blir kallt.
+      <main className="Content">
+        <p className="Description">
+          Nattfrost är en based app som varnar när det är risk för frost under natten.
+          För att få en varning, ange din e-postadress och stad nedan:
         </p>
 
-        <form className="signup-form" onSubmit={handleSubmit}>
-          <label className="field-label" htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            className="field-input"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
+        <form className="Form" onSubmit={handleSubmit}>
+        <label className="Email-label" htmlFor="email"> Email </label>
+        <input
+          id="email"
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="Email-input"
+          required
+        />  
 
-          <label className="field-label" htmlFor="stad">Stad</label>
-          <input
-            id="stad"
-            type="text"
-            className="field-input"
-            value={stad}
-            onChange={e => setStad(e.target.value)}
-            required
-          />
+        <label className="Stad-label" htmlFor="stad"> Stad </label>
+        <input
+          id="stad"
+          type="text"
+          value={stad}
+          onChange={(e) => setStad(e.target.value)}
+          className="Stad-input"
+          required
+        />  
 
-          <button type="submit" className="ok-button">Ok</button>
+        <button type="submit" className="Submit-button"> Ok </button>
+        
         </form>
+
       </main>
+
+
     </div>
+
   )
+  
 }
 
 export default App
