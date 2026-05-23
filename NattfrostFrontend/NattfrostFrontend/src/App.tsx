@@ -5,10 +5,27 @@ import logo from './assets/test_copy_2.png'
 function App() {
   const [email, setEmail] = useState('')
   const [stad, setStad] = useState('')
+  const [showModal, setShowModal] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    console.log({ email, stad })
+    try {
+      const response = await fetch('http://localhost:5111/api/subscriber', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, city: stad }),
+      })
+      if (response.ok) {
+        setEmail('')
+        setStad('')
+        setShowModal(true)
+      } else {
+        const text = await response.text()
+        alert(text || 'Något gick fel. Försök igen.')
+      }
+    } catch {
+      alert('Kunde inte nå servern. Kontrollera att backend körs.')
+    }
   }
 
   return (
@@ -55,6 +72,17 @@ function App() {
           <button type="submit" className="Submit-button">Ok</button>
         </form>
       </main>
+
+      {showModal && (
+        <div className="Modal-overlay" onClick={() => setShowModal(false)}>
+          <div className="Modal" onClick={(e) => e.stopPropagation()}>
+            <p className="Modal-text">
+              Du är nu registrerad och kommer att få ett email om det finns risk för nattfrost i ditt område.
+            </p>
+            <button className="Modal-close" onClick={() => setShowModal(false)}>Ok</button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }
