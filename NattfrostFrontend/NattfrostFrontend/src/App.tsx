@@ -1,6 +1,9 @@
 import { useState } from 'react'
-import logo from './assets/test copy 2.png'
+import reactLogo from './assets/react.svg'
+import viteLogo from './assets/vite.svg'
+import heroImg from './assets/hero.png'
 import './App.css'
+import logo from './assets/test_copy_2.png'
 
 function App() {
   const [email, setEmail] = useState('')
@@ -56,6 +59,7 @@ function App() {
       </main>
     </div>
   )
+  
 }
 
 export default App
