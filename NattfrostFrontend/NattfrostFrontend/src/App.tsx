@@ -3,17 +3,15 @@ import './App.css'
 import logo from './assets/test_copy_2.png'
 
 function App() {
-
   const [email, setEmail] = useState('')
   const [stad, setStad] = useState('')
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     console.log({ email, stad })
   }
 
-
   return (
-
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="Nattfrost" />
@@ -28,37 +26,37 @@ function App() {
         </p>
 
         <form className="Form" onSubmit={handleSubmit}>
-        <label className="Email-label" htmlFor="email"> Email </label>
-        <input
-          id="email"
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          className="Email-input"
-          required
-        />  
+          {/* Email-blocket */}
+          <div className="Form-group">
+            <label className="Email-label" htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="Email-input"
+              required
+            />  
+          </div>
 
-        <label className="Stad-label" htmlFor="stad"> Stad </label>
-        <input
-          id="stad"
-          type="text"
-          value={stad}
-          onChange={(e) => setStad(e.target.value)}
-          className="Stad-input"
-          required
-        />  
+          {/* Stad-blocket */}
+          <div className="Form-group">
+            <label className="Stad-label" htmlFor="stad">Stad</label>
+            <input
+              id="stad"
+              type="text"
+              value={stad}
+              onChange={(e) => setStad(e.target.value)}
+              className="Stad-input"
+              required
+            />  
+          </div>
 
-        <button type="submit" className="Submit-button"> Ok </button>
-        
+          <button type="submit" className="Submit-button">Ok</button>
         </form>
-
       </main>
-
-
     </div>
-
   )
-  
 }
 
 export default App
