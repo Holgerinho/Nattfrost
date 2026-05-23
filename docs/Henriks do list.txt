@@ -1,0 +1,19 @@
+Today we built the weather and geocoding backend for Nattfrost on feature/weatherForecast.
+
+What's done (4 commits pushed):
+
+OpenMeteoService — calls the free Open-Meteo APIs. Three methods: GetCoordinatesAsync, CityExistsAsync, HasFrostRiskAsync. Custom exceptions, proper error handling, no API key needed.
+IEmailNotificationService + NoOpEmailService — interface contract for email alerts. Holgerino just implements one method and swaps one line in Program.cs (tagged with !!!).
+FrostCheckBackgroundService — runs daily at 19:00. Loops all subscribers, geocodes each city, checks frost risk, fires alerts. Fault-tolerant per subscriber. Also callable on-demand via the controller.
+WeatherController — two endpoints for testing: /api/weather/frostrisk?city=... (single city) and /api/weather/check (full subscriber loop, right now).
+LocationCoordinates record — clean data model for city + lat/lon.
+What's not done (not mine):
+
+Email sending implementation (Holgerino)
+Subscriber registration flow + city validation (teammate — CityExistsAsync is ready for it)
+Frontend (other feature branch)
+Branch: feature/weatherForecast, 4 commits ahead of main, ready for review.
+
+Short version: "The weather backend is done. Geocoding, frost checking, background scheduler, email contract, test endpoints — all working. Pushed and ready."
+
+http://localhost:5111/api/weather/check 
