@@ -16,9 +16,9 @@ function App() {
   }
 
   return (
-    <div className="page">
-      <header className="site-header">
-        <img src={logo} alt="Nattfrost" className="site-logo"/>
+    <div className="App">
+      <header className="App-header">
+        <img src={logo} className="App-logo" alt="Nattfrost" />
       </header>
 
       <hr className="divider" />
@@ -33,33 +33,38 @@ function App() {
           19:00 varje dag om det blir kallt.
         </p>
 
-        <form className="signup-form" onSubmit={handleSubmit}>
-          <label className="field-label" htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            className="field-input"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
+        <form className="Form" onSubmit={handleSubmit}>
+          {/* Email-blocket */}
+          <div className="Form-group">
+            <label className="Email-label" htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="Email-input"
+              required
+            />  
+          </div>
 
-          <label className="field-label" htmlFor="stad">Stad</label>
-          <input
-            id="stad"
-            type="text"
-            className="field-input"
-            value={stad}
-            onChange={e => setStad(e.target.value)}
-            required
-          />
+          {/* Stad-blocket */}
+          <div className="Form-group">
+            <label className="Stad-label" htmlFor="stad">Stad</label>
+            <input
+              id="stad"
+              type="text"
+              value={stad}
+              onChange={(e) => setStad(e.target.value)}
+              className="Stad-input"
+              required
+            />  
+          </div>
 
-          <button type="submit" className="ok-button">Ok</button>
+          <button type="submit" className="Submit-button">Ok</button>
         </form>
       </main>
     </div>
   )
-  
 }
 
 export default App
