@@ -1,16 +1,65 @@
-* {
-  box-sizing: border-box;
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&display=swap');
+
+:root{
+  --bg: #72e3ff;
+  --text: #fff;
+  --text-h: #fff;
+  --border: #555;
+  --sans: 'Comfortaa', system-ui, sans-serif;
+  --heading: 'Comfortaa', system-ui, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+  --bg: linear-gradient(180deg, #72e3ff 0%, #31d4fd 100%);
+  --text-stroke: 1px #000000;
+
+  background: var(--bg);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #72e3ff;
+    --text: #ffffff;
+    --text-h: #ffffff;
+    --border: #000000;
+    --bg: linear-gradient(180deg, #72e3ff 0%, #31d4fd 100%);
+    --text-stroke: 1px #000000;
+  }
 }
 
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Calibri', sans-serif;
-  background-color: #3a3a3a;
-  display: flex;
-  justify-content: center;
+  font-family: var(--sans);
+  color: var(--text);
+  text-shadow: var(--text-stroke);
 }
 
 #root {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  width: 1126px;
+  max-width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+  border-inline: 1px solid var(--border);
+}
+
+h1, h2 { 
+  margin: 0;
+  font-family: var(--heading);
+  font-weight: normal;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  -webkit-text-stroke: var(--text-stroke);
+}
+
+p { 
+  margin: 0;
+  line-height: 1.5;
+  -webkit-text-stroke: var(--text-stroke);
+}
+
+code {
+  font-family: var(--mono);
+  background: var(--border);
+  padding: 2px 4px;
+  border-radius: 4px;
 }
