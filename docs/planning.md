@@ -43,6 +43,10 @@ Syftet med applikationen är att hjälpa användare skydda växter och odlingar 
 - SQL Server Management Studio (SSMS)
 - Trello
 - Notepad++
+- Postman
+- Krita
+- Discord
+- GitHub
 
 ## Arbetsmetod
 
